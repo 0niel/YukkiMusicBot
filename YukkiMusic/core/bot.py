@@ -10,6 +10,7 @@
 import sys
 
 from pyrogram import Client
+from pyrogram.enums import ChatMemberStatus
 
 import config
 
@@ -41,7 +42,7 @@ class YukkiBot(Client):
             )
             sys.exit()
         a = await self.get_chat_member(config.LOG_GROUP_ID, self.id)
-        if a.status != "administrator":
+        if a.status != ChatMemberStatus.ADMINISTRATOR:
             LOGGER(__name__).error(
                 "Please promote Bot as Admin in Logger Group"
             )
