@@ -77,7 +77,9 @@ class Userbot(Client):
             self.one.id = get_me.id
             assistantids.append(get_me.id)
             if get_me.last_name:
-                self.one.name = f"{get_me.first_name} {get_me.last_name}"
+                self.one.name = (
+                    get_me.first_name + " " + get_me.last_name
+                )
             else:
                 self.one.name = get_me.first_name
             LOGGER(__name__).info(
@@ -106,7 +108,9 @@ class Userbot(Client):
             self.two.id = get_me.id
             assistantids.append(get_me.id)
             if get_me.last_name:
-                self.two.name = f"{get_me.first_name} {get_me.last_name}"
+                self.two.name = (
+                    get_me.first_name + " " + get_me.last_name
+                )
             else:
                 self.two.name = get_me.first_name
             LOGGER(__name__).info(
@@ -135,7 +139,9 @@ class Userbot(Client):
             self.three.id = get_me.id
             assistantids.append(get_me.id)
             if get_me.last_name:
-                self.three.name = f"{get_me.first_name} {get_me.last_name}"
+                self.three.name = (
+                    get_me.first_name + " " + get_me.last_name
+                )
             else:
                 self.three.name = get_me.first_name
             LOGGER(__name__).info(
@@ -164,7 +170,9 @@ class Userbot(Client):
             self.four.id = get_me.id
             assistantids.append(get_me.id)
             if get_me.last_name:
-                self.four.name = f"{get_me.first_name} {get_me.last_name}"
+                self.four.name = (
+                    get_me.first_name + " " + get_me.last_name
+                )
             else:
                 self.four.name = get_me.first_name
             LOGGER(__name__).info(
@@ -193,7 +201,9 @@ class Userbot(Client):
             self.five.id = get_me.id
             assistantids.append(get_me.id)
             if get_me.last_name:
-                self.five.name = f"{get_me.first_name} " + get_me.last_name
+                self.five.name = (
+                    get_me.first_name + " " + get_me.last_name
+                )
             else:
                 self.five.name = get_me.first_name
             LOGGER(__name__).info(

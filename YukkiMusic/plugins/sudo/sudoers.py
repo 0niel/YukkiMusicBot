@@ -92,7 +92,7 @@ async def userdel(client, message: Message, _):
             SUDOERS.remove(user.id)
             await message.reply_text(_["sudo_4"])
             return
-        await message.reply_text("Something wrong happened.")
+        await message.reply_text(f"Something wrong happened.")
         return
     user_id = message.reply_to_message.from_user.id
     if user_id not in SUDOERS:
@@ -102,7 +102,7 @@ async def userdel(client, message: Message, _):
         SUDOERS.remove(user_id)
         await message.reply_text(_["sudo_4"])
         return
-    await message.reply_text("Something wrong happened.")
+    await message.reply_text(f"Something wrong happened.")
 
 
 @app.on_message(filters.command(SUDOUSERS_COMMAND) & ~BANNED_USERS)
@@ -113,7 +113,9 @@ async def sudoers_list(client, message: Message, _):
     for x in OWNER_ID:
         try:
             user = await app.get_users(x)
-            user = user.mention or user.first_name
+            user = (
+                user.first_name if not user.mention else user.mention
+            )
             count += 1
         except Exception:
             continue
@@ -123,7 +125,11 @@ async def sudoers_list(client, message: Message, _):
         if user_id not in OWNER_ID:
             try:
                 user = await app.get_users(user_id)
-                user = user.mention or user.first_name
+                user = (
+                    user.first_name
+                    if not user.mention
+                    else user.mention
+                )
                 if smex == 0:
                     smex += 1
                     text += _["sudo_6"]

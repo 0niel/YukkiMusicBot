@@ -11,7 +11,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
 def botplaylist_markup(_):
-    return [
+    buttons = [
         [
             InlineKeyboardButton(
                 text=_["PL_B_1"],
@@ -22,16 +22,19 @@ def botplaylist_markup(_):
             ),
         ],
         [
-            InlineKeyboardButton(text=_["PL_B_4"], callback_data="PM"),
+            InlineKeyboardButton(
+                text=_["PL_B_4"], callback_data="PM"
+            ),
             InlineKeyboardButton(
                 text=_["CLOSE_BUTTON"], callback_data="close"
             ),
         ],
     ]
+    return buttons
 
 
 def top_play_markup(_):
-    return [
+    buttons = [
         [
             InlineKeyboardButton(
                 text=_["PL_B_9"], callback_data="SERVERTOP global"
@@ -56,10 +59,11 @@ def top_play_markup(_):
             ),
         ],
     ]
+    return buttons
 
 
 def get_playlist_markup(_):
-    return [
+    buttons = [
         [
             InlineKeyboardButton(
                 text=_["P_B_1"], callback_data="play_playlist a"
@@ -77,10 +81,11 @@ def get_playlist_markup(_):
             ),
         ],
     ]
+    return buttons
 
 
 def top_play_markup(_):
-    return [
+    buttons = [
         [
             InlineKeyboardButton(
                 text=_["PL_B_9"], callback_data="SERVERTOP Global"
@@ -105,10 +110,11 @@ def top_play_markup(_):
             ),
         ],
     ]
+    return buttons
 
 
 def failed_top_markup(_):
-    return [
+    buttons = [
         [
             InlineKeyboardButton(
                 text=_["BACK_BUTTON"],
@@ -119,10 +125,11 @@ def failed_top_markup(_):
             ),
         ],
     ]
+    return buttons
 
 
 def warning_markup(_):
-    return InlineKeyboardMarkup(
+    upl = InlineKeyboardMarkup(
         [
             [
                 InlineKeyboardButton(
@@ -142,10 +149,11 @@ def warning_markup(_):
             ],
         ]
     )
+    return upl
 
 
 def close_markup(_):
-    return InlineKeyboardMarkup(
+    upl = InlineKeyboardMarkup(
         [
             [
                 InlineKeyboardButton(
@@ -155,3 +163,4 @@ def close_markup(_):
             ]
         ]
     )
+    return upl

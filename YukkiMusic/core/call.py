@@ -474,7 +474,7 @@ class Call(PyTgCalls):
                 autoend[chat_id] = {}
             else:
                 final = users + \
-                        1 if isinstance(
+                    1 if isinstance(
                         update, JoinedGroupCallParticipant) else users - 1
 
                 counter[chat_id] = final
