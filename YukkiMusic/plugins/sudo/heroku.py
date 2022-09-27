@@ -76,8 +76,8 @@ async def log_(client, message, _):
 @app.on_message(filters.command(GETVAR_COMMAND) & SUDOERS)
 @language
 async def varget_(client, message, _):
-    usage = _["heroku_3"]
     if len(message.command) != 2:
+        usage = _["heroku_3"]
         return await message.reply_text(usage)
     check_var = message.text.split(None, 2)[1]
     if await is_heroku():
@@ -102,8 +102,8 @@ async def varget_(client, message, _):
 @app.on_message(filters.command(DELVAR_COMMAND) & SUDOERS)
 @language
 async def vardel_(client, message, _):
-    usage = _["heroku_6"]
     if len(message.command) != 2:
+        usage = _["heroku_6"]
         return await message.reply_text(usage)
     check_var = message.text.split(None, 2)[1]
     if await is_heroku():
@@ -128,8 +128,8 @@ async def vardel_(client, message, _):
 @app.on_message(filters.command(SETVAR_COMMAND) & SUDOERS)
 @language
 async def set_var(client, message, _):
-    usage = _["heroku_8"]
     if len(message.command) < 3:
+        usage = _["heroku_8"]
         return await message.reply_text(usage)
     to_set = message.text.split(None, 2)[1].strip()
     value = message.text.split(None, 2)[2].strip()

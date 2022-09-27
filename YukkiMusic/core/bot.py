@@ -19,7 +19,7 @@ from ..logging import LOGGER
 
 class YukkiBot(Client):
     def __init__(self):
-        LOGGER(__name__).info(f"Starting Bot")
+        LOGGER(__name__).info("Starting Bot")
         super().__init__(
             "YukkiMusicBot",
             api_id=config.API_ID,
@@ -48,7 +48,7 @@ class YukkiBot(Client):
             )
             sys.exit()
         if get_me.last_name:
-            self.name = get_me.first_name + " " + get_me.last_name
+            self.name = f"{get_me.first_name} {get_me.last_name}"
         else:
             self.name = get_me.first_name
         LOGGER(__name__).info(f"MusicBot Started as {self.name}")
