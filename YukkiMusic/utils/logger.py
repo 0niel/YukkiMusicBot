@@ -10,6 +10,7 @@
 from config import LOG, LOG_GROUP_ID
 from YukkiMusic import app
 from YukkiMusic.utils.database import is_on_off
+from config.config import MUSIC_BOT_NAME
 
 
 async def play_logs(message, streamtype):
@@ -19,7 +20,7 @@ async def play_logs(message, streamtype):
         else:
             chatusername = "Private Group"
         logger_text = f"""
-**YUKKI PLAY LOG**
+**{MUSIC_BOT_NAME} Play Log**
 
 **Chat:** {message.chat.title} [`{message.chat.id}`]
 **User:** {message.from_user.mention}

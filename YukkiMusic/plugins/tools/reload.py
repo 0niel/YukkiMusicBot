@@ -9,6 +9,7 @@
 import asyncio
 
 from pyrogram import filters
+from pyrogram.enums import ChatMembersFilter
 from pyrogram.types import CallbackQuery, Message
 
 from config import BANNED_USERS, MUSIC_BOT_NAME, adminlist, lyrical
@@ -31,14 +32,12 @@ RESTART_COMMAND = get_command("RESTART_COMMAND")
 async def reload_admin_cache(client, message: Message, _):
     try:
         chat_id = message.chat.id
-        admins = await app.get_chat_members(chat_id, filter="administrators")
+        admins = app.get_chat_members(chat_id, filter=ChatMembersFilter.ADMINISTRATORS)
         authusers = await get_authuser_names(chat_id)
-        adminlist[chat_id] = [
-            user.user.id
-            for user in admins
-            if user.privileges.can_manage_video_chats
-        ]
-
+        adminlist[chat_id] = []
+        async for user in admins:
+            if user.privileges.can_manage_video_chats:
+                adminlist[chat_id].append(user.user.id)
         for user in authusers:
             user_id = await alpha_to_int(user)
             adminlist[chat_id].append(user_id)
