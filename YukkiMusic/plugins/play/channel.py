@@ -56,13 +56,13 @@ async def playmode_(client, message: Message, _):
         if chat.type != enums.ChatType.CHANNEL:
             return await message.reply_text(_["cplay_5"])
         try:
-            admins = await app.get_chat_members(
-                chat.id, filter="administrators"
+            admins = app.get_chat_members(
+                chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS
             )
         except Exception:
             return await message.reply_text(_["cplay_4"])
-        for users in admins:
-            if users.status == "creator":
+        async for users in admins:
+            if users.status == enums.ChatMemberStatus.OWNER:
                 creatorusername = users.user.username
                 creatorid = users.user.id
         if creatorid != message.from_user.id:

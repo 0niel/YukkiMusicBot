@@ -13,6 +13,7 @@ import re
 import yt_dlp
 from pykeyboard import InlineKeyboard
 from pyrogram import filters
+from pyrogram.enums import ChatAction
 from pyrogram.types import (InlineKeyboardButton,
                             InlineKeyboardMarkup, InputMediaAudio,
                             InputMediaVideo, Message)
@@ -198,7 +199,7 @@ async def song_download_cb(client, CallbackQuery, _):
                               thumb=thumb_image_path, caption=title, supports_streaming=True)
 
         await mystic.edit_text(_["song_11"])
-        await app.send_chat_action(chat_id=CallbackQuery.message.chat.id, action="upload_video")
+        await app.send_chat_action(chat_id=CallbackQuery.message.chat.id, action=ChatAction.UPLOAD_VIDEO)
 
         try:
             await CallbackQuery.edit_message_media(media=med)
@@ -216,7 +217,7 @@ async def song_download_cb(client, CallbackQuery, _):
                               thumb=thumb_image_path, title=title, performer=x["uploader"])
 
         await mystic.edit_text(_["song_11"])
-        await app.send_chat_action(chat_id=CallbackQuery.message.chat.id, action="upload_audio")
+        await app.send_chat_action(chat_id=CallbackQuery.message.chat.id, action=ChatAction.UPLOAD_AUDIO)
 
         try:
             await CallbackQuery.edit_message_media(media=med)
