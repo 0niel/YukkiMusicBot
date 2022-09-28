@@ -185,7 +185,6 @@ async def song_download_cb(client, CallbackQuery, _):
     title = x["title"].title()
     title = re.sub("\W+", " ", title)
     thumb_image_path = await CallbackQuery.message.download()
-    duration = x["duration"]
     if stype == "video":
         thumb_image_path = await CallbackQuery.message.download()
         width = CallbackQuery.message.photo.width
@@ -195,6 +194,7 @@ async def song_download_cb(client, CallbackQuery, _):
 
         except Exception as e:
             return await mystic.edit_text(_["song_9"].format(e))
+        duration = x["duration"]
         med = InputMediaVideo(media=file_path, duration=duration, width=width, height=height,
                               thumb=thumb_image_path, caption=title, supports_streaming=True)
 
